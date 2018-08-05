@@ -18,16 +18,23 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/primary_color</item>
         <item name="colorPrimaryDark">@color/primary_dark_color</item>
+        <item name="actionBarStyle">@style/AppBarStyle</item>
+        <item name="android:windowContentOverlay">@null</item>
     </style>
 
-    <!-- Style for a category of vocabulary words -->
-    <style name="CategoryStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/list_item_height</item>
-        <item name="android:gravity">center_vertical</item>
-        <item name="android:padding">16dp</item>
-        <item name="android:textColor">@android:color/white</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+    <!-- App bar style -->
+    <style name="AppBarStyle" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <!-- Remove the shadow below the app bar -->
+        <item name="elevation">0dp</item>
     </style>
+
+    <!-- Style for the sliding tabs in action bar -->
+    <style name="TabStyle" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">#FFFFFF</item>
+        <item name="tabSelectedTextColor">#FFFFFF</item>
+        <item name="tabTextColor">#A8A19E</item>
+        <item name="textAllCaps">true</item>
+    </style>
+
+
 </resources>

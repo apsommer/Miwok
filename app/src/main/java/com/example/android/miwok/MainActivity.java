@@ -2,6 +2,8 @@ package com.example.android.miwok;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,82 +17,29 @@ public class MainActivity extends AppCompatActivity {
         // initialize the activity by calling superclass method
         super.onCreate(savedInstanceState);
 
-        // Set the content of the activity to use the activity_main.xml layout file
+        // set the content of the activity to use the activity_main.xml layout file
+        // activity_main.xml is simply a linearlayout holding viewpager, all sizes match_parent
         setContentView(R.layout.activity_main);
 
-        // Find the View that shows the numbers category
-        TextView numbers = (TextView) findViewById(R.id.numbers);
+        // get reference to viewpager
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
-        // Set a click listener on that View
-        // OnClickListener created in-line with onClick() method override
-        numbers.setOnClickListener(new OnClickListener() {
+        // create custom adapter that inflates the appropriate View (based on position) and returns it to the viewpager
+        CategoryAdapter adapter = new CategoryAdapter(this, getSupportFragmentManager());
 
-            // The code in this method will be executed when the numbers category is clicked on.
-            @Override
-            public void onClick(View view) {
+        // associate adapter to viewpager
+        viewPager.setAdapter(adapter);
 
-                // Create a new intent to open the {@link NumbersActivity}
-                Intent numbersIntent = new Intent(MainActivity.this, NumbersActivity.class);
+        // get reference to tablayout
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
-                // Start the new activity
-                // no conditional catch here as the intent is explicit
-                startActivity(numbersIntent);
-            }
-        });
+        // Connect the tab layout with the view pager. This will
+        //   1. Update the tab layout when the view pager is swiped
+        //   2. Update the view pager when a tab is selected
+        //   3. Set the tab layout's tab names with the view pager's adapter's titles
+        //      by calling onPageTitle()
+        tabLayout.setupWithViewPager(viewPager);
 
-        // Find the View that shows the family category
-        TextView family = (TextView) findViewById(R.id.family);
-
-        // Set a click listener on that View
-        // OnClickListener created in-line with onClick() method override
-        family.setOnClickListener(new OnClickListener() {
-
-            // The code in this method will be executed when the family category is clicked on.
-            @Override
-            public void onClick(View view) {
-                // Create a new intent to open the {@link FamilyActivity}
-                Intent familyIntent = new Intent(MainActivity.this, FamilyActivity.class);
-
-                // Start the new activity
-                startActivity(familyIntent);
-            }
-        });
-
-        // Find the View that shows the colors category
-        TextView colors = (TextView) findViewById(R.id.colors);
-
-        // Set a click listener on that View
-        // OnClickListener created in-line with onClick() method override
-        colors.setOnClickListener(new OnClickListener() {
-
-            // The code in this method will be executed when the colors category is clicked on.
-            @Override
-            public void onClick(View view) {
-                // Create a new intent to open the {@link ColorsActivity}
-                Intent colorsIntent = new Intent(MainActivity.this, ColorsActivity.class);
-
-                // Start the new activity
-                startActivity(colorsIntent);
-            }
-        });
-
-        // Find the View that shows the phrases category
-        TextView phrases = (TextView) findViewById(R.id.phrases);
-
-        // Set a click listener on that View
-        // OnClickListener created in-line with onClick() method override
-        phrases.setOnClickListener(new OnClickListener() {
-
-            // The code in this method will be executed when the phrases category is clicked on.
-            @Override
-            public void onClick(View view) {
-                // Create a new intent to open the {@link PhrasesActivity}
-                Intent phrasesIntent = new Intent(MainActivity.this, PhrasesActivity.class);
-
-                // Start the new activity
-                startActivity(phrasesIntent);
-            }
-        });
     }
 
 }
