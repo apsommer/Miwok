@@ -14,13 +14,13 @@ public class Word {
     // resource id's are positive integers > 0, therefore -1 is always outside this range
     private int mImageResourceId = -1;
 
-    // int for audio resource id
+    // int for audio resource
     private int mAudioResourceId;
 
     // used in a boolean comparison to determine if the Word has an associated image
-    private static final int NO_IMAGE_PROVIDED= -1;
+    private static final int NO_IMAGE_PROVIDED = -1;
 
-    // constructor without image, used in PhrasesActivity
+    // constructor without image, used in PhrasesFragment
     public Word(String defaultTranslation, String miwokTranslation, int audioResourceId) {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
